@@ -6,30 +6,25 @@
   []
   (rand-nth ["hello" "stare" "place" "cares" "happy"]))
 
-(defn num-in-position
-  [chosen-word guess]
-  nil)
+(defn check-character
+  [chosen-word character idx]
+  (cond
+    (= character (nth chosen-word idx)) :green
+    (contains? (set chosen-word) character) :yellow
+    :else :red))
 
-(defn num-in-word
-  [chosen-word guess]
-  nil)
+(defn index-characters
+  [word]
+  (map-indexed (fn [i c] [i c]) word))
 
-(defn submit-guess
+(defn check-solution
   [chosen-word guess]
-  nil)
+  (->> guess
+       index-characters
+       (map (fn [[idx character]] (check-character chosen-word character idx)))))
 
 (comment
-  (let [word-chars (clojure.string/split "heels" #"")
-        guess-chars (clojure.string/split "jello" #"")]
-    (loop [correct-to-proc word-chars
-           guesses-to-proc guess-chars
-           in-position 0
-           in-word 0]
-      (if (seq guesses-to-proc)
-        (if (= (first guesses-to-proc) (first correct-to-proc))
-          (recur (rest correct-to-proc) (rest guesses-to-proc) (inc in-position) in-word)
-          (recur (rest correct-to-proc) (rest guesses-to-proc) in-position in-word))
-        {:correct-to-proc correct-to-proc
-         :guesses-to-proc guesses-to-proc
-         :in-position in-position
-         :in-word in-word}))))
+  (check-solution "hello" "stair")
+  (check-solution "hello" "stare")
+  (check-solution "hello" "heyyo")
+  (check-solution "hello" "hello"))

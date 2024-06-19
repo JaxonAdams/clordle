@@ -1,21 +1,35 @@
-; Jacking in...
-; Connecting using "Leiningen" project type.
-; You can make Calva auto-select this.
-;   - See https://calva.io/connect-sequences/
-; 
+; This is the Calva REPL Window.
+; It's just a file, really, with some special treatment from Calva.
+; Use it as a REPL input prompt if you like. (When the REPL is connected.)
+; TIPS: The keyboard shortcut `ctrl+alt+o r` shows and focuses this window
+; Please see https://calva.io/repl-window/ for more info.
+; Happy coding! ♥️
 
-; Starting Jack-in Terminal: pushd c:\Users\jadam\OneDrive\Desktop\more_practice\clordle & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.1.1"] -- update-in :plugins conj [cider/cider-nrepl,"0.47.1"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- repl :headless & popd
-; nREPL connection failed: Error: read ECONNRESET
-; Failed connecting.
-; nREPL Connection was closed
-; Using host:port 127.0.0.1:50853 ...
-; Hooking up nREPL sessions ...
-; Connected session: clj
-; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
-nil
-clj꞉clordle.core꞉> 
-; Jack-in done.
-clj꞉clordle.core꞉> 
+; TIPS: As with any Clojure file when the REPL is connected:
+; - `alt+enter` evaluates the current top level form.
+; - `ctrl+enter` evaluates the current form.
+; Special for this file:
+; - `alt+up` and `alt+down` traverse up and down the REPL command history
+;    when the cursor is after the last contents at the prompt
+; 
+; See also the Calva Inspector: https://calva.io/inspector/
+
+PLEASE NOTE
+We will update the default location of this file.
+The new default location will be
+  "<projectRootPath>/.calva/repl.calva-repl"
+For now the legacy path is used by default.
+To give yourself a smooth transition, you can opt in
+to the change, by configuring this setting as false:
+  "calva.useLegacyReplWindowPath"
+and then add "**/.calva/repl.calva-repl" to your ".gitignore" file.
+
+
+This file is configured as the output destination for all REPL output.
+You can configure this with the setting:
+  "calva.outputDestinations"
+
+
 ; Jacking in...
 ; Connecting using "Leiningen" project type.
 ; You can make Calva auto-select this.
@@ -23,155 +37,202 @@ clj꞉clordle.core꞉> 
 ; 
 
 ; Starting Jack-in Terminal: pushd c:\Users\jadam\OneDrive\Desktop\more_practice\clordle & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.1.1"] -- update-in :plugins conj [cider/cider-nrepl,"0.47.1"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; nREPL connection failed: Error: read ECONNRESET
-; Failed connecting.
-; nREPL Connection was closed
-; Using host:port 127.0.0.1:50862 ...
+; Using host:port 127.0.0.1:54187 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
 nil
 clj꞉clordle.core꞉> 
+"Please see https://calva.io/output/#about-stdout-in-the-repl-window
+about why stdout printed to this file is prepended with `;` to be line comments."
+clj꞉clordle.core꞉> 
 ; Jack-in done.
 clj꞉clordle.core꞉> 
-#'clordle.core/-main
-clj꞉clordle.core꞉> 
-; Syntax error compiling at (c:\Users\jadam\OneDrive\Desktop\more_practice\clordle\src\clordle\game.clj:8:3).
-; Unable to resolve symbol: daily-word in this context
-clj꞉clordle.game꞉> 
-#'clordle.game/daily-word
-clj꞉clordle.game꞉> 
-"happy"
-clj꞉clordle.game꞉> 
-"happy"
-clj꞉clordle.game꞉> 
-"stare"
-clj꞉clordle.game꞉> 
-"hello"
-clj꞉clordle.game꞉> 
-"stare"
-clj꞉clordle.game꞉> 
-"stare"
-clj꞉clordle.game꞉> 
-"hello"
-clj꞉clordle.game꞉> 
-"place"
-clj꞉clordle.game꞉> 
-"hello"
-clj꞉clordle.game꞉> 
-"happy"
-clj꞉clordle.game꞉> 
-#'clordle.game/submit-guess
-clj꞉clordle.game꞉> 
-#{\a \b \c \d \e}
-clj꞉clordle.game꞉> 
-; Error printing return value (IllegalArgumentException) at clojure.lang.RT/contains (RT.java:853).
-; contains? not supported on type: java.lang.String
-clj꞉clordle.game꞉> 
-; Error printing return value (IllegalArgumentException) at clojure.lang.RT/contains (RT.java:853).
-; contains? not supported on type: java.lang.Character
-clj꞉clordle.game꞉> 
-(\e)
-clj꞉clordle.game꞉> 
-; Error printing return value (ClassCastException) at clordle.game/eval10635$fn (form-init15102577093199590776.clj:18).
-; class java.lang.Character cannot be cast to class java.lang.CharSequence (java.lang.Character and java.lang.CharSequence are in module java.base of loader 'bootstrap')
-clj꞉clordle.game꞉> 
-(\e)
-clj꞉clordle.game꞉> 
-; Execution error (ClassCastException) at clordle.game/eval10651 (form-init15102577093199590776.clj:18).
-; class java.lang.String cannot be cast to class java.util.regex.Pattern (java.lang.String and java.util.regex.Pattern are in module java.base of loader 'bootstrap')
-clj꞉clordle.game꞉> 
-["a" "b" "c" "d" "e"]
-clj꞉clordle.game꞉> 
-#function[clordle.game/eval10657/fn--10658]
-clj꞉clordle.game꞉> 
-#function[clordle.game/eval10663/fn--10664]
-clj꞉clordle.game꞉> 
-("e")
-clj꞉clordle.game꞉> 
-(0 0 0 0 1)
-clj꞉clordle.game꞉> 
-(1 1 1 1 1)
-clj꞉clordle.game꞉> 
-(0 0 1 1 0)
-clj꞉clordle.game꞉> 
-["h" "a" "l" "l" "o"]
-clj꞉clordle.game꞉> 
-["h" "a" "l" "l" "o"]
-clj꞉clordle.game꞉> 
-{"h" "h", "a" "e", "l" "l", "o" "o"}
-clj꞉clordle.game꞉> 
-(["h" "h"] ["l" "l"] ["o" "o"])
+{:correct-to-proc (), :guesses-to-proc (), :in-position 2, :in-word 0}
 clj꞉clordle.game꞉> 
 nil
 clj꞉clordle.game꞉> 
-{"h" "h", "a" "e", "l" "l", "o" "o"}
+("0h" "1e" "2y" "3y" "4o")
 clj꞉clordle.game꞉> 
-["h" "a" "l" "l" "o"]
+([0 \h] [1 \e] [2 \y] [3 \y] [4 \o])
 clj꞉clordle.game꞉> 
-["h" "a" "l" "l" "o"]
+([0 "h"] [1 "e"] [2 "y"] [3 "y"] [4 "o"])
 clj꞉clordle.game꞉> 
-["h" "e" "y" "y" "o"]
+#'clordle.game/index-characters
 clj꞉clordle.game꞉> 
-; Execution error (ArityException) at clordle.game/eval10713 (form-init15102577093199590776.clj:22).
-; Wrong number of args (1) passed to: clojure.string/split
+([0 "h"] [1 "e"] [2 "l"] [3 "l"] [4 "o"])
 clj꞉clordle.game꞉> 
-()
+#'clordle.game/check-solution
 clj꞉clordle.game꞉> 
-{\h 1, \e 1, \y 2, \o 1}
+; [h 0 h 0]
+; [h 0 e 1]
+; [h 0 l 2]
+; [h 0 l 3]
+; [h 0 o 4]
+; [e 1 h 0]
+; [e 1 e 1]
+; [e 1 l 2]
+; [e 1 l 3]
+; [e 1 o 4]
+; [l 2 h 0]
+; [l 2 e 1]
+; [l 2 l 2]
+; [l 2 l 3]
+; [l 2 o 4]
+; [l 3 h 0]
+; [l 3 e 1]
+; [l 3 l 2]
+; [l 3 l 3]
+; [l 3 o 4]
+; [o 4 h 0]
+; [o 4 e 1]
+; [o 4 l 2]
+; [o 4 l 3]
+; [o 4 o 4]
+nil
 clj꞉clordle.game꞉> 
-{\h 1, \e 1, \l 2, \o 1}
+; [h 0 h 0]
+; CORRECT POSITION! >> h
+; [h 0 e 1]
+; [h 0 l 2]
+; [h 0 l 3]
+; [h 0 o 4]
+; [e 1 h 0]
+; [e 1 e 1]
+; CORRECT POSITION! >> e
+; [e 1 l 2]
+; [e 1 l 3]
+; [e 1 o 4]
+; [l 2 h 0]
+; [l 2 e 1]
+; [l 2 l 2]
+; CORRECT POSITION! >> l
+; [l 2 l 3]
+; LETTER IN CHOSEN WORD! >> l
+; [l 2 o 4]
+; [l 3 h 0]
+; [l 3 e 1]
+; [l 3 l 2]
+; LETTER IN CHOSEN WORD! >> l
+; [l 3 l 3]
+; CORRECT POSITION! >> l
+; [l 3 o 4]
+; [o 4 h 0]
+; [o 4 e 1]
+; [o 4 l 2]
+; [o 4 l 3]
+; [o 4 o 4]
+; CORRECT POSITION! >> o
+nil
 clj꞉clordle.game꞉> 
-[{\h 1, \e 1, \y 2, \o 1} {\h 1, \e 1, \l 2, \o 1}]
+; [h 0 h 0]
+; CORRECT POSITION! >> h
+; [h 0 e 1]
+; [h 0 l 2]
+; [h 0 l 3]
+; [h 0 o 4]
+; [e 1 h 0]
+; [e 1 e 1]
+; CORRECT POSITION! >> e
+; [e 1 l 2]
+; [e 1 l 3]
+; [e 1 o 4]
+; [l 2 h 0]
+; [l 2 e 1]
+; [l 2 l 2]
+; CORRECT POSITION! >> l
+; [l 2 l 3]
+; LETTER IN CHOSEN WORD! >> l
+; [l 2 o 4]
+; [l 3 h 0]
+; [l 3 e 1]
+; [l 3 l 2]
+; LETTER IN CHOSEN WORD! >> l
+; [l 3 l 3]
+; CORRECT POSITION! >> l
+; [l 3 o 4]
+; [o 4 h 0]
+; [o 4 e 1]
+; [o 4 l 2]
+; [o 4 l 3]
+; [o 4 o 4]
+; CORRECT POSITION! >> o
+nil
+clj꞉clordle.game꞉> 
+; Syntax error compiling at (c:\Users\jadam\OneDrive\Desktop\more_practice\clordle\src\clordle\game.clj:26:7).
+; Unable to resolve symbol: check-character in this context
+clj꞉clordle.game꞉> 
+#'clordle.game/check-character
 clj꞉clordle.game꞉> 
 nil
 clj꞉clordle.game꞉> 
-{:in-position 0, :in-word 0}
+(:red :yellow :red :red :red)
 clj꞉clordle.game꞉> 
-; h j
-; h e
-; h l
-; h l
-; h o
-; h nil
-{:in-position 0, :in-word 0}
+#'clordle.game/check-solution
 clj꞉clordle.game꞉> 
-; h j
-; e e
-; l l
-; l l
-; o o
-; nil nil
-{:in-position 4, :in-word 0}
+(:red :red :red :red :red)
 clj꞉clordle.game꞉> 
-; Syntax error compiling at (c:\Users\jadam\OneDrive\Desktop\more_practice\clordle\src\clordle\game.clj:28:7).
-; Unable to resolve symbol: result in this context
+(:red :red :red :red :yellow)
 clj꞉clordle.game꞉> 
-{:correct-to-proc (), :guesses-to-proc (), :in-position 4, :in-word 0}
+(:yellow :yellow :red :red :yellow)
 clj꞉clordle.game꞉> 
-{:correct-to-proc (), :guesses-to-proc (), :in-position 4, :in-word 0}
+(:yellow :yellow :yellow :yellow :yellow)
 clj꞉clordle.game꞉> 
-{:correct-to-proc (), :guesses-to-proc (), :in-position 4, :in-word 0}
+#'clordle.game/check-character
 clj꞉clordle.game꞉> 
-{:correct-to-proc (), :guesses-to-proc (), :in-position 4, :in-word 0}
+(:yellow :yellow :red :red :yellow)
 clj꞉clordle.game꞉> 
-; hello j
-; ello e
-; llo l
-; lo l
-; o o
-;  nil
-{:correct-to-proc (), :guesses-to-proc (), :in-position 4, :in-word 0}
+#'clordle.game/check-character
 clj꞉clordle.game꞉> 
-; heels j
-; eels e
-; els l
-; ls l
-; s o
-;  nil
-{:correct-to-proc (), :guesses-to-proc (), :in-position 2, :in-word 1}
+(:yellow :yellow :red :red :yellow)
 clj꞉clordle.game꞉> 
-{:correct-to-proc (), :guesses-to-proc (), :in-position 2, :in-word 0}
+#'clordle.game/check-solution
 clj꞉clordle.game꞉> 
-{:correct-to-proc (), :guesses-to-proc (), :in-position 2, :in-word 0}
+; Error printing return value (ClassCastException) at clordle.game/check-character (form-init3525826523335994577.clj:9).
+; class java.lang.String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
+clj꞉clordle.game꞉> 
+#'clordle.game/check-character
+clj꞉clordle.game꞉> 
+#'clordle.game/check-solution
+clj꞉clordle.game꞉> 
+; Error printing return value (ClassCastException) at clordle.game/check-character (form-init3525826523335994577.clj:12).
+; class java.lang.String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
+clj꞉clordle.game꞉> 
+#'clordle.game/check-character
+clj꞉clordle.game꞉> 
+#'clordle.game/index-characters
+clj꞉clordle.game꞉> 
+#'clordle.game/check-solution
+clj꞉clordle.game꞉> 
+; Error printing return value (ClassCastException) at clordle.game/check-character (form-init3525826523335994577.clj:12).
+; class java.lang.String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
+clj꞉clordle.game꞉> 
+#'clordle.game/check-character
+clj꞉clordle.game꞉> 
+#'clordle.game/index-characters
+clj꞉clordle.game꞉> 
+#'clordle.game/check-solution
+clj꞉clordle.game꞉> 
+h
+(:greene
+ :greenl
+ :redl
+ :redo
+ :green)
+clj꞉clordle.game꞉> 
+#'clordle.game/check-character
+clj꞉clordle.game꞉> 
+#'clordle.game/index-characters
+clj꞉clordle.game꞉> 
+#'clordle.game/check-solution
+clj꞉clordle.game꞉> 
+(:green :green :red :red :green)
+clj꞉clordle.game꞉> 
+(:green :green :green :green :green)
+clj꞉clordle.game꞉> 
+(:red :red :red :red :yellow)
+clj꞉clordle.game꞉> 
+(:red :red :red :red :red)
+clj꞉clordle.game꞉> 
+(:green :green :red :red :green)
 clj꞉clordle.game꞉> 
