@@ -40,5 +40,8 @@
   (check-solution "hello" "hello"))
 
 (comment
+  (check-solution (daily-word) "stare"))
+
+(comment
   (vec words)
   (daily-word))
