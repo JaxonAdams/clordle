@@ -25,15 +25,12 @@
     (contains? (set chosen-word) character) {(str character) :in-word}
     :else {(str character) :incorrect}))
 
-(defn index-characters
-  [word]
-  (map-indexed (fn [i c] [i c]) word))
-
 (defn check-solution
   [guess]
   (->> guess
-       index-characters
-       (map (fn [[idx character]] (check-character (daily-word) character idx)))))
+       (map-indexed (fn [idx character] (check-character (daily-word) character idx)))))
+
+# !------------------------------------------------------------------------------------------------
 
 (comment
   (check-solution "stair")
