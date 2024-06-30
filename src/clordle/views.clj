@@ -10,4 +10,7 @@
     (h/include-css "/css/styles.css")]
    [:body
     [:header.header
-     [:h1.title "CLORDLE"]]]))
+     [:h1.title "CLORDLE"]]
+    [:main.main-container
+     (map (fn [n] [:div.input-row
+                   (map (fn [m] [:input {:type "text" :maxlength "1" :id (str "input-" m "-" n)}]) (range 5))]) (range 6))]]))
