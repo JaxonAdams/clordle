@@ -46,12 +46,28 @@ html, body {
     border: 2px solid gray;
 }
 
-.in-position {
+.revealed {
+    animation: rotateX 1s ease;
+}
+
+.in-position.animation-midpoint {
     background-color: #6ca965;
 }
 
-.in-word {
+.in-word.animation-midpoint {
     background-color: #c8b653;
+}
+
+@keyframes rotateX {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
 }
 
 @media screen and (max-device-width: 768px) {

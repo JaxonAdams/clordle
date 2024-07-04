@@ -75,7 +75,7 @@ const handleSubmitGuess = async (guess, attemptIdx, guessRow) => {
     if (isMatch) {
         setTimeout(() => {
             alert("Congratulations on guessing today's word! Come back tomorrow for a new word!");
-        }, 500);
+        }, 1000);
         return;
     }
 
@@ -137,13 +137,18 @@ const onPageLoad = () => {
                     if (attemptIdx === 5) {
                         setTimeout(() => {
                             alert("Come back tomorrow for a new word!");
-                        }, 500);
+                        }, 1000);
                     }
                 } else {
                     console.log(`Already guessed ${guess}.`);
                 }
 
             }
+        });
+        element.addEventListener("animationstart", event => {
+            setTimeout(() => {
+                event.target.classList.add("animation-midpoint");
+            }, 500);  // 500 = 1000 (animation duration) / 2, a.k.a. animation midpoint
         });
     });
 };
