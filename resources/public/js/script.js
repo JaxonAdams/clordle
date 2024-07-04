@@ -30,6 +30,22 @@ const handleCharacterInput = event => {
 
 };
 
+const updateWithGuessResponse = (response, guessRow) => {
+    const guessInputs = guessRow.querySelectorAll("input");
+
+    for (let i = 0; i < response.length; i++) {
+        const guessChar = guessInputs[i].value;
+
+        if (response[i][guessChar] === "in-position") {
+            guessInputs[i].classList.add("in-position");
+        } else if (response[i][guessChar] === "in-word") {
+            guessInputs[i].classList.add("in-word");
+        } else {
+            guessInputs[i].classList.add("incorrect");
+        }
+    }
+}
+
 const handleSubmitGuess = async (guess, attemptIdx, guessRow) => {
     console.log(`SUBMITTING GUESS ${guess}`);
 
@@ -41,6 +57,7 @@ const handleSubmitGuess = async (guess, attemptIdx, guessRow) => {
     const guessResponseData = await guessResponse.json();
     
     console.log(guessResponseData);
+    updateWithGuessResponse(guessResponseData, guessRow);
 
     guessRow.querySelectorAll("input").forEach(element => {
         element.setAttribute("disabled", true);

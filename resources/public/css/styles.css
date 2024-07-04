@@ -46,6 +46,14 @@ html, body {
     border: 2px solid gray;
 }
 
+.in-position {
+    background-color: #6ca965;
+}
+
+.in-word {
+    background-color: #c8b653;
+}
+
 @media screen and (max-device-width: 768px) {
     .title {
         font-size: 4rem;
