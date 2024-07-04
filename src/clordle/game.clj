@@ -14,6 +14,7 @@
       (quot 1000)
       (quot 60)
       (quot 60)
+      (- 6)                      ;; offset to local time -- GMT->MST -6:00
       (quot 24)                  ;; number of days since Jan 1, 1970
       (mod (count (get-words)))  ;; use modulo to map to an element in our list of words
       (->> (nth (get-words)))))
