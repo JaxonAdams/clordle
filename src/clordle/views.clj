@@ -14,7 +14,8 @@
      [:h1.title "CLORDLE"]]
     [:main.main-container
      (map 
-      (fn [n] [:div.input-row 
+      (fn [n] [:div.input-row
+               {:id (str "input-row-" n)}
                (map 
                 (fn [m] [:input 
                          {:type "text" :maxlength "1" :id (str "input-" m "-" n)}]) 

@@ -30,9 +30,27 @@ const handleCharacterInput = event => {
 
 };
 
-const handleSubmitGuess = () => {};
+const handleSubmitGuess = (guess, attemptIdx, guessRow) => {
+    console.log(`SUBMITTING GUESS ${guess}`);
+
+    guessRow.querySelectorAll("input").forEach(element => {
+        element.setAttribute("disabled", true);
+    });
+
+    // automatically move to the next row / guess
+    if (attemptIdx < 5) {
+        nextRow = document.querySelector(`#input-row-${attemptIdx + 1}`);
+        nextRow.querySelectorAll("input").forEach(element => {
+            element.removeAttribute("disabled");
+        });
+        nextRow.querySelector(`#input-0-${attemptIdx + 1}`).focus();
+    }
+
+};
 
 const onPageLoad = () => {
+    const previousGuesses = new Set();
+
     const inputRows = document.querySelectorAll("div.input-row");
 
     // disable all but the first row
@@ -71,7 +89,13 @@ const onPageLoad = () => {
                     guess += element.value;
                 });
 
-                console.log(`SUBMITTING GUESS ${guess}`);
+                if (!previousGuesses.has(guess)) {
+                    previousGuesses.add(guess);
+                    handleSubmitGuess(guess, attemptIdx, guessRow);
+                } else {
+                    console.log(`Already guessed ${guess}.`);
+                }
+
             }
         });
     });
