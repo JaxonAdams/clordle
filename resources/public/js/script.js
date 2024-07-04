@@ -36,6 +36,8 @@ const updateWithGuessResponse = (response, guessRow) => {
     for (let i = 0; i < response.length; i++) {
         const guessChar = guessInputs[i].value;
 
+        guessInputs[i].classList.add("revealed");
+
         if (response[i][guessChar] === "in-position") {
             guessInputs[i].classList.add("in-position");
         } else if (response[i][guessChar] === "in-word") {
@@ -63,8 +65,22 @@ const handleSubmitGuess = async (guess, attemptIdx, guessRow) => {
         element.setAttribute("disabled", true);
     });
 
-    // automatically move to the next row / guess
+    let isMatch = true;
+    for (let resObj of guessResponseData) {
+        if (Object.values(resObj)[0] != "in-position") {
+            isMatch = false;
+        }
+    }
+
+    if (isMatch) {
+        setTimeout(() => {
+            alert("Congratulations on guessing today's word! Come back tomorrow for a new word!");
+        }, 500);
+        return;
+    }
+
     if (attemptIdx < 5) {
+        // automatically move to the next row / guess
         nextRow = document.querySelector(`#input-row-${attemptIdx + 1}`);
         nextRow.querySelectorAll("input").forEach(element => {
             element.removeAttribute("disabled");
@@ -118,6 +134,11 @@ const onPageLoad = () => {
                 if (!previousGuesses.has(guess)) {
                     previousGuesses.add(guess);
                     handleSubmitGuess(guess, attemptIdx, guessRow);
+                    if (attemptIdx === 5) {
+                        setTimeout(() => {
+                            alert("Come back tomorrow for a new word!");
+                        }, 500);
+                    }
                 } else {
                     console.log(`Already guessed ${guess}.`);
                 }
