@@ -30,8 +30,17 @@ const handleCharacterInput = event => {
 
 };
 
-const handleSubmitGuess = (guess, attemptIdx, guessRow) => {
+const handleSubmitGuess = async (guess, attemptIdx, guessRow) => {
     console.log(`SUBMITTING GUESS ${guess}`);
+
+    const guessResponse = await fetch(`/api/check/${guess}`);
+    if (!guessResponse.ok) {
+        alert("Error submitting guess " + guess);
+    }
+
+    const guessResponseData = await guessResponse.json();
+    
+    console.log(guessResponseData);
 
     guessRow.querySelectorAll("input").forEach(element => {
         element.setAttribute("disabled", true);
