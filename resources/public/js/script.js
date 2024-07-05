@@ -4,11 +4,14 @@ const moveToNextInput = (nextGuessIdx, attemptIdx) => {
     if (nextGuessIdx >= 0 && nextGuessIdx <= 4) {
         const nextTargetId = `input#input-${nextGuessIdx}-${attemptIdx}`;
         const nextTarget = document.querySelector(nextTargetId);
+        nextTarget.value = "";
         nextTarget.focus();
     }
 };
 
 const handleCharacterInput = event => {
+
+    event.preventDefault();
 
     acceptedInputs = "abcdefghijklmnopqrstuvwxyz";
 
@@ -17,16 +20,13 @@ const handleCharacterInput = event => {
     const attemptIdx = parseInt(targetIdParts[2]);
     const guessCharIdx = parseInt(targetIdParts[1]);
 
-    if (acceptedInputs.indexOf(event.data) === -1) {
+    if (acceptedInputs.indexOf(event.key) === -1) {
         event.target.value = "";
         return;
     }
 
-    if (event.inputType === "insertText") {
-        // navigate to next text box
-        moveToNextInput(guessCharIdx + 1, attemptIdx);
-    }
-    // event.inputType === deleteContentBackward is handled by keydown event handler
+    event.target.value = event.key;
+    moveToNextInput(guessCharIdx + 1, attemptIdx);
 
 };
 
@@ -109,7 +109,7 @@ const onPageLoad = () => {
     // register event listeners for each of the input text boxes
     const allInput = document.querySelectorAll("input");
     allInput.forEach(element => {
-        element.addEventListener("input", handleCharacterInput);
+        // element.addEventListener("input", handleCharacterInput);
         element.addEventListener("keydown", event => {
 
             const targetId = event.target.id;
@@ -143,6 +143,8 @@ const onPageLoad = () => {
                     console.log(`Already guessed ${guess}.`);
                 }
 
+            } else {
+                handleCharacterInput(event);
             }
         });
         element.addEventListener("animationstart", event => {
