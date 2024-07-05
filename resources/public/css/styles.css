@@ -74,12 +74,6 @@ html, body {
     .title {
         font-size: 4rem;
     }
-
-    .input-row>input {
-        width: 100px;
-        height: 100px;
-        font-size: 64px;
-    }
 }
 
 @media screen and (max-device-width: 480px) {
@@ -88,8 +82,8 @@ html, body {
     }
 
     .input-row>input {
-        width: 150px;
-        height: 150px;
-        font-size: 96px;
+        width: 100px;
+        height: 100px;
+        font-size: 64px;
     }
 }
