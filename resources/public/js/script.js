@@ -20,7 +20,7 @@ const handleCharacterInput = event => {
     const attemptIdx = parseInt(targetIdParts[2]);
     const guessCharIdx = parseInt(targetIdParts[1]);
 
-    if (acceptedInputs.indexOf(event.key) === -1) {
+    if (acceptedInputs.indexOf(event.key.toLowerCase()) === -1) {
         event.target.value = "";
         return;
     }
