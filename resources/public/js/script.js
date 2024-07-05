@@ -25,7 +25,7 @@ const handleCharacterInput = event => {
         return;
     }
 
-    event.target.value = event.key;
+    event.target.value = event.key.toLowerCase();
     moveToNextInput(guessCharIdx + 1, attemptIdx);
 
 };
