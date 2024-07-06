@@ -28,8 +28,11 @@
 
 (defn check-solution
   [guess]
-  (->> guess
-       (map-indexed (fn [idx character] (check-character (daily-word) character idx)))))
+  (if-not (re-matches #"^[a-zA-Z]{5}$" guess)
+    (throw (IllegalArgumentException. "Invalid guess"))
+    (->> guess 
+         clj-str/lower-case
+         (map-indexed (fn [idx character] (check-character (daily-word) character idx))))))
 
 ;; !------------------------------------------------------------------------------------------------
 
